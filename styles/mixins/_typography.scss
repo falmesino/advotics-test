@@ -1,0 +1,37 @@
+/**
+ * mixins/_typography.scss
+ * Typography-related mixins
+ */
+
+ @use "sass:math";
+
+ /**
+ * Rem units
+ * Implementing CSS rem units with pixel fallback
+ * 
+ * Usage
+ * 
+ *  body
+ *  {
+ *      @include font-size(16);
+ *      @include line-height(28);
+ *  }
+ */
+
+@mixin fontSize($size, $important: false, $base: 16)
+{
+  font-size: ($size + 0px) if($important, !important, null);; // fallback for old browsers
+  font-size: math.div($size, $base) * 1rem if($important, !important, null);
+}
+
+@mixin letterSpacing($size, $important: false, $base: 16)
+{
+  letter-spacing: $size + 0px if($important, !important, null); // fallback for old browsers
+  letter-spacing: math.div($size, $base) * 1rem if($important, !important, null);
+}
+
+@mixin lineHeight($size, $important: false, $base: 16)
+{
+  line-height: $size + 0px if($important, !important, null); // fallback for old browsers
+  line-height: math.div($size, $base) * 1rem if($important, !important, null);
+}

@@ -1,0 +1,14 @@
+/**
+ * Debug
+ * Debugging an element by adding border around it was never this easy
+ * 
+ * Usage
+ * 
+ * @include debug(red);
+ * @include debug(blue, true);
+ */
+
+@mixin debug($color: red, $important: false)
+{
+   border: solid 1px $color if($important, !important, null);
+}

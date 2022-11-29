@@ -1,0 +1,19 @@
+/**
+ * Flexbox
+ * DRY approach for flex-related stuff
+ * 
+ * Usage
+ * 
+ * @include flex();
+ * @include flex(column);
+ * @include flex(column, flex-start, center, true);
+ */
+
+@mixin flex($direction: row, $align: normal, $justify: normal, $wrap: false, $important: false)
+{
+  display: flex if($important, !important, null);
+  flex-direction: #{$direction} if($important, !important, null);
+  align-items: #{$align} if($important, !important, null);
+  justify-content: #{$justify} if($important, !important, null);
+  flex-wrap: if($wrap, wrap, nowrap) if($important, !important, null);
+}

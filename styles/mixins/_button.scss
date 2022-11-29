@@ -1,0 +1,232 @@
+/**
+ * Apply style to button no matter what state it is
+ */
+
+@mixin button-make($transition: true)
+{
+  @if $transition 
+  {
+    @include transition();
+  }
+
+  @content;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active,
+  &:visited
+  {
+    @content;
+  }
+
+  &:focus:not(:focus-visible),
+  &:focus:not(:-moz-focusring)
+  {
+    outline: none;
+  }
+
+  @include buttonDisabled()
+  {
+    pointer-events: none;
+  }
+}
+
+// Alias
+@mixin buttonMake($transition: true)
+{
+  @include button-make($transition)
+  {
+    @content;
+  }
+}
+
+/**
+ * Apply style when hover on hover-capable browser
+ * so it doesn't stick
+ */
+
+@mixin button-hover()
+{
+  @media (hover: hover)
+  {
+    &:hover
+    {
+      @content;
+    }
+  }
+}
+
+// Alias
+@mixin buttonHover()
+{
+  @include button-hover()
+  {
+    @content;
+  }
+}
+
+/**
+ * Apply style for disabled button
+ */
+
+@mixin button-disabled()
+{
+  &:disabled,
+  &[disabled],
+  &[class*="disabled"]
+  {
+    @content;
+  }
+}
+
+/**
+ * Alias
+ */
+
+@mixin buttonDisabled()
+{
+  @include button-disabled()
+  {
+    @content;
+  }
+}
+
+/**
+ * (Bootstrap) Button variants
+ * Easily pump out default styles, as well as :hover, :focus, :active,
+ * and disabled options for all buttons
+ */
+
+@mixin button-variant($color, $background, $border, $switch: false)
+{
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  border: solid 1px $border;
+ 
+  @if $switch
+  {
+    &:focus,
+    &.focus
+    {
+      color: $background;
+      background-color: $color;
+      border-color: $background;
+    }
+
+    &:hover
+    {
+      color: $background;
+      background-color: $color;
+      border-color: $background;
+    }
+
+    &:active,
+    &.active,
+    .open > &.dropdown-toggle
+    {
+      color: $background;
+      background-color: $color;
+      background-image: none;
+      border-color: $background;
+
+      &:hover,
+      &:focus,
+      &.focus
+      {
+        color: $background;
+        background-color: $color;
+        border-color: $background;
+      }
+    }
+  }
+  @else
+  {
+    &:focus,
+    &.focus
+    {
+      color: $color;
+      background-color: darken($background, 10%);
+      border-color: darken($border, 25%);
+    }
+
+    &:hover
+    {
+      color: $color;
+      background-color: darken($background, 10%);
+      border-color: darken($border, 12%);
+    }
+
+    &:active,
+    &.active,
+    .open > &.dropdown-toggle
+    {
+      color: $color;
+      background-color: darken($background, 10%);
+      background-image: none;
+      border-color: darken($border, 12%);
+
+      &:hover,
+      &:focus,
+      &.focus
+      {
+        color: $color;
+        background-color: darken($background, 17%);
+        border-color: darken($border, 25%);
+      }
+    }
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] &
+  {
+    &:hover,
+    &:focus,
+    &.focus
+    {
+      background-color: $background;
+      border-color: $border;
+    }
+  }
+ 
+  .badge
+  {
+    color: $background;
+    background-color: $color;
+  }
+ }
+ 
+@mixin buttonVariant($color, $background, $border, $switch: false)
+{
+  @include button-variant($color, $background, $border, $switch);
+}
+
+/**
+ * Button sizes
+ */
+
+@mixin button-size(
+  $padding-y: inherit,
+  $padding-x: inherit,
+  $font-size: inherit,
+  $line-height: inherit,
+  $border-radius: inherit
+){
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: $line-height;
+  border-radius: $border-radius;
+}
+
+@mixin buttonSize(
+  $padding-y: inherit,
+  $padding-x: inherit,
+  $font-size: inherit,
+  $line-height: inherit,
+  $border-radius: inherit
+){
+  @include button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius);
+}

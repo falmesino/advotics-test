@@ -1,0 +1,24 @@
+/**
+ * helpers/_icon.scss
+ * Icon-related helpers goes here
+ */
+
+@mixin svgIcon($pseudo: true)
+{
+  @if $pseudo
+  {
+    &::before
+    {
+      content: "";
+      background-repeat: no-repeat;
+      background-position: center;
+      @content;
+    }
+  }
+  @else
+  {
+    background-repeat: no-repeat;
+    background-position: center;
+    @content;
+  }
+}

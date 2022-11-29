@@ -1,0 +1,27 @@
+/**
+ * Transition
+ * 
+ * Usage
+ * @include transition_raw(color .3s ease);
+ */
+
+@mixin transition_raw($args...)
+{
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+ 
+/**
+ * Transition
+ * 
+ * Usage
+ * @include transition(ease, 0.3s);
+*/
+ 
+@mixin transition($ease: ease, $duration: 0.3s)
+{
+  @include transition_raw(all $duration $ease);
+}

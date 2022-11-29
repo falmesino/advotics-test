@@ -1,0 +1,85 @@
+@mixin scrollbar (
+  $scrollbarColor: #F7F7F7,
+  $scrollbarColorHover: #EEE,
+  $scrollbarWidth: 8px,
+  $scrollbarHeight: 8px,
+  $scrollbarRadius: 4px
+) {
+
+  &::-webkit-scrollbar 
+  {
+    width: $scrollbarWidth;
+    height: $scrollbarHeight;
+  }
+  
+  &::-webkit-scrollbar-corner
+  {
+    width: $scrollbarWidth;
+  }
+  
+  /* Track */
+  &::-webkit-scrollbar-track
+  {
+    background: transparent;
+  }
+   
+  /* Handle */
+  &::-webkit-scrollbar-thumb 
+  {
+    background: $scrollbarColor; 
+    border-radius: $scrollbarRadius;
+    cursor: pointer; 
+
+    &:hover 
+    {
+      background: $scrollbarColorHover;
+    }
+  }
+
+  /* Mozilla */
+  &::-moz-scrollbar
+  {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-moz-scrollbar-corner
+  {
+    width: 6px;
+  }
+
+  /* Track */
+  &::-moz-scrollbar-track 
+  {
+    background: transparent;
+  }
+  
+  /* Handle */
+  &::-moz-scrollbar-thumb 
+  {
+    background: $scrollbarColor; 
+    border-radius: $scrollbarRadius;
+    cursor: pointer; 
+  }
+
+  /* Handle on hover */
+  &::-moz-scrollbar-thumb:hover
+  {
+    background: $scrollbarColorHover; 
+  }
+}
+
+@mixin noScrollbar
+{
+  @include scrollbar;
+
+  &::-webkit-scrollbar
+  {
+    display: none;
+  }
+
+  &::-moz-scrollbar
+  {
+    display: none;
+  }
+}

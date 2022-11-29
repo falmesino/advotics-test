@@ -1,0 +1,26 @@
+@mixin gradient($direction: 90deg, $list: (#8E2DE2 -100%, #4A00E0 0%), $important: false)
+{ 
+  background-image: -webkit-linear-gradient($direction, $list) if($important, !important, null);
+  background-image: -moz-linear-gradient($direction, $list) if($important, !important, null);
+  background-image: -o-linear-gradient($direction, $list) if($important, !important, null);
+  background-image: linear-gradient($direction, $list) if($important, !important, null);  
+}
+
+@mixin gradient-text($direction: 90deg, $list: (#8E2DE2 -100%, #4A00E0 0%), $important: false)
+{
+  @include gradient($direction, $list, $important);
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.0001) if($important, !important, null);
+  text-fill-color: rgba(0, 0, 0, 0.0001) if($important, !important, null);
+  -webkit-background-clip: text if($important, !important, null);
+  background-clip: text if($important, !important, null);
+  background-size: cover;
+
+  /* Safari bug */
+  text-shadow: 0px 0px #00000000;
+}
+
+// Alias
+@mixin gradientText($direction: 90deg, $list: (#8E2DE2 -100%, #4A00E0 0%), $important: false)
+{
+  @include gradient-text($direction, $list, $important);
+}

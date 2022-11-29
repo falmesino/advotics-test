@@ -1,0 +1,50 @@
+/**
+ * Responsive breakpoints
+ */
+
+ @use "sass:map";
+
+$grid-columns             : 12 !default;
+$grid-row-columns         : 6 !default;
+$grid-gutter-width        : 30px !default;
+$grid-gutter-width-mobile : 30px;
+$grid-mobile-trigger      : 'lg' !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1170px, // 1140px,
+  xxl: 1320px
+) !default;
+ 
+$breakpoint_min_xs:   map.get($grid-breakpoints, 'xs');
+$breakpoint_min_sm:   map.get($grid-breakpoints, 'sm');
+$breakpoint_min_md:   map.get($grid-breakpoints, 'md');
+$breakpoint_min_lg:   map.get($grid-breakpoints, 'lg');
+$breakpoint_min_xl:   map.get($grid-breakpoints, 'xl');
+$breakpoint_min_xxl:  map.get($grid-breakpoints, 'xxl');
+
+$breakpoint_max_xs:   map.get($grid-breakpoints, 'xs') - 1px;
+$breakpoint_max_sm:   map.get($grid-breakpoints, 'sm') - 1px;
+$breakpoint_max_md:   map.get($grid-breakpoints, 'md') - 1px;
+$breakpoint_max_lg:   map.get($grid-breakpoints, 'lg') - 1px;
+$breakpoint_max_xl:   map.get($grid-breakpoints, 'xl') - 1px;
+$breakpoint_max_xxl:  map.get($grid-breakpoints, 'xxl') - 1px;
+ 
+$flexboxgrid-breakpoints: 
+  xs 0 375px,
+  sm 576px 540px,
+  md 768px 720px,
+  lg 992px 960px,
+  xl 1200px 1140px,
+  xxl 1400px 1320px;

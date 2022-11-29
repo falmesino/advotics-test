@@ -1,0 +1,35 @@
+/**
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+ */
+
+ // @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,300&display=swap');
+
+@mixin fontPrimary($font-weight: 400) {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: $font-weight;
+}
+
+@mixin fontSecondary($font-weight: 400) {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: $font-weight;
+}
+
+/**
+ * Typography-related classes
+ */
+
+@mixin typographyBuilder($font_weight: 400, $font_size: 16, $line_height: 0)
+{
+  @include fontPrimary($font_weight);
+  @include fontSize($font_size);
+
+  @if $line_height == 0
+  {
+    @include lineHeight(math.div(($font_size * 150), 100));
+  }
+  @else
+  {
+    @include lineHeight($line_height);
+  }
+}

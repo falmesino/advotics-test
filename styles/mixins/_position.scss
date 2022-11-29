@@ -1,0 +1,96 @@
+/**
+ * mixins/_position.scss
+ * Element positioning-related mixins
+ */
+
+@mixin position(
+  $position: relative,
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: auto
+) {
+  position: #{$position};
+
+  @if $top
+  {
+    @if $top == auto
+    {
+      top: $top;
+    }
+    @else if $top == 0
+    {
+      top: 0;
+    }
+    @else
+    {
+      top: $top;
+    }
+  }
+
+  @if $right
+  {
+    @if $right == auto
+    {
+      right: $right;
+    }
+    @else if $right == 0
+    {
+      right: 0;
+    }
+    @else
+    {
+      right: $right;
+    }
+  }
+
+  @if $bottom
+  {
+    @if $bottom == auto
+    {
+      bottom: $bottom;
+    }
+    @else if $bottom == 0
+    {
+      bottom: 0;
+    }
+    @else
+    {
+      bottom: $bottom;
+    }
+  }
+
+  @if $left
+  {
+    @if $left == auto
+    {
+      left: $left;
+    }
+    @else if $left == 0
+    {
+      left: 0;
+    }
+    @else
+    {
+      left: $left;
+    }
+  }
+}
+
+@mixin absolute(
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: auto
+) {
+  @include position(absolute, $top, $right, $bottom, $left);
+}
+
+@mixin fixed(
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: auto
+) {
+  @include position(fixed, $top, $right, $bottom, $left);
+}

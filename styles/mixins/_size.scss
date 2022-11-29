@@ -1,0 +1,47 @@
+/**
+ * Fixed Size
+ * Make an element size become fixed in oneliner
+ * 
+ * Usage
+ * 
+ * @include fixedSize(100%);
+ * @include fixedSize(48px);
+ * @include fixedSize(calc(100% - 30px));
+ * @include fixedSize(4rem);
+ * 
+ * Too lazy to write docs, those above also apply to fixedWidth() and fixedHeight()
+ */
+
+@mixin fixedWidth($size, $important: false)
+{
+   min-width: #{$size} if($important, !important, null);
+   max-width: #{$size} if($important, !important, null);
+   width: #{$size} if($important, !important, null);
+}
+
+@mixin fixedHeight($size, $important: false)
+{
+   min-height: #{$size} if($important, !important, null);
+   max-height: #{$size} if($important, !important, null);
+   height: #{$size} if($important, !important, null);
+}
+
+@mixin fixedSize($size, $important: false)
+{
+   @include fixedWidth($size, $important);
+   @include fixedHeight($size, $important);
+}
+
+@mixin resetWidth($important: false)
+{
+   min-width: initial if($important, !important, null);
+   width: auto if($important, !important, null);
+   max-width: none if($important, !important, null);
+}
+
+@mixin resetHeight($important: false)
+{
+   min-height: initial if($important, !important, null);
+   height: auto if($important, !important, null);
+   max-height: none if($important, !important, null);
+}

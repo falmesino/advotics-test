@@ -1,0 +1,79 @@
+@mixin mt($size: auto, $important: false)
+{
+  margin-top: if($size == 0, 0, $size + 0px) if($important, !important, null);
+}
+
+@mixin mr($size: auto, $important: false)
+{
+  margin-right: if($size == 0, 0, $size + 0px) if($important, !important, null);
+}
+
+@mixin mb($size: auto, $important: false)
+{
+  margin-bottom: if($size == 0, 0, $size + 0px) if($important, !important, null);
+}
+
+@mixin ml($size: auto, $important: false)
+{
+  margin-left: if($size == 0, 0, $size + 0px) if($important, !important, null);
+}
+
+@mixin mx($size: auto, $important: false)
+{
+  @include ml($size, $important);
+  @include mr($size, $important);
+}
+
+@mixin my($size: auto, $important: false)
+{
+  @include mt($size, $important);
+  @include mb($size, $important);
+}
+
+@mixin m($size: auto, $important: false)
+{
+  @include mt($size, $important);
+  @include mr($size, $important);
+  @include mb($size, $important);
+  @include ml($size, $important);
+}
+
+@mixin pt($size: auto, $important: false)
+{
+  padding-top: if($size == 0, 0, $size + 0px) if($important, !important, null);
+}
+
+@mixin pr($size: auto, $important: false)
+{
+  padding-right: if($size == 0, 0, $size + 0px) if($important, !important, null);
+}
+
+@mixin pb($size: auto, $important: false)
+{
+  padding-bottom: if($size == 0, 0, $size + 0px) if($important, !important, null);
+}
+
+@mixin pl($size: auto, $important: false)
+{
+  padding-left: if($size == 0, 0, $size + 0px) if($important, !important, null);
+}
+
+@mixin px($size: auto, $important: false)
+{
+  @include pl($size, $important);
+  @include pr($size, $important);
+}
+
+@mixin py($size: auto, $important: false)
+{
+  @include pt($size, $important);
+  @include pb($size, $important);
+}
+
+@mixin p($size: auto, $important: false)
+{
+  @include pt($size, $important);
+  @include pr($size, $important);
+  @include pb($size, $important);
+  @include pl($size, $important);
+}
