@@ -35,7 +35,7 @@ const FilterPeriod:FC<TFilterPeriod> = ({
 
   const ref = useRef<HTMLDivElement>(null)
 
-  const [collapsed, setCollapsed] = useState<boolean>(true)
+  const [collapsed, setCollapsed] = useState<boolean>(defaultState)
   const [dateStart, setDateStart] = useState<any>(sub(new Date(), { days: 7}))
   const [dateEnd, setDateEnd] = useState<any>(sub(new Date(), { days: 1}))
   const [dateStartMax, setDateStartMax] = useState<any>(dateEnd)
