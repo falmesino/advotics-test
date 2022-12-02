@@ -1,0 +1,189 @@
+@import 'styles/main.scss';
+
+.filterPeriod
+{
+  @include transition;
+  @include resetElement;
+  @include flex(column, stretch, stretch);
+  position: relative;
+  margin: 0;
+  padding: 0;
+
+  background-color: $color_white;
+  box-shadow: 0px 2px 3px #00000029;
+  border-radius: 2px;
+
+  &__collapsed
+  {
+    border-radius: 2px 2px 0 0;
+  }
+
+  @include mediaBreakpoint('down', 'md')
+  {
+    margin-top: 30px;
+  }
+}
+
+.header
+{
+  @include resetElement;
+  @include flex(row, center, flex-start);
+}
+
+.toggle
+{
+  @include flex(row, center, center);
+  @include fixedSize(48px);
+
+  @include buttonMake {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    color: #6A6A6A;
+  }
+
+  @include buttonHover {
+    color: rgba($color_black, 0.5);
+  }
+}
+
+.body
+{
+  @include transition;
+  @include flex(row, stretch, space-between);
+  @include absolute(100%, 0, auto, 0);
+  background-color: $color_white;
+  z-index: 10;
+  padding: 16px;
+
+  background-color: $color_white;
+  box-shadow: 0px 2px 3px #00000029;
+  border-radius: 2px;
+}
+
+.title
+{
+  @include resetElement;
+  @include flex(row, center, flex-start);
+  padding: 0 16px;
+
+  span
+  {
+    @include flex(row, center, flex-start);
+    @include typographyBuilder(400, 16, 22);
+    @include fontSecondary(400);
+    padding: 0 0 0 16px;
+    color: #8B8B8B;
+
+    white-space: nowrap;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  @include mediaBreakpoint('down', 'md')
+  {
+    @include fixedWidth(48px);
+
+    span
+    {
+      display: none;
+    }
+  }
+}
+
+.period
+{
+  @include flex(row, center, flex-start);
+  @include typographyBuilder(400, 16, 22);
+  @include fontSecondary(400);
+  position: relative;
+  color: #6A6A6A;
+  flex-grow: 1;
+
+  & > span
+  {
+    &:nth-child(2) 
+    {
+      margin: 0 4px;
+    }
+  }
+}
+
+.periods
+{
+  @include flex(column, flex-start, stretch);
+  @include fixedWidth(20%);
+  position: relative;
+}
+
+.buttons
+{
+  @include flex(column, flex-start, stretch);
+  @include fixedWidth(100%);
+  position: relative;
+}
+
+.button
+{
+  @include flex(row, center, flex-start);
+  @include fixedWidth(100%);
+  @include fixedHeight(48px);
+  @include typographyBuilder(400, 14, 14);
+  position: relative;
+
+  @include buttonMake {
+    border: none;
+    border-bottom: solid 1px #ccc;
+    background-color: transparent;
+    box-shadow: none;
+    color: #6A6A6A;
+  }
+
+  @include buttonHover {
+    color: $color_black;
+  }
+}
+
+.action
+{
+  @include flex(row, center, center);
+  @include fixedWidth(100%);
+  position: relative;
+  margin: 16px 0 0;
+}
+
+.apply
+{
+  @include flex(row, center, center);
+  @include fixedWidth(100%);
+  @include fixedHeight(48px);
+  border-radius: 4px;
+
+  @include buttonMake {
+    border: none;
+    background-color: $color_primary;
+    color :$color_white;
+  }
+
+  @include buttonHover {
+    background-color: darken($color_primary, 5%);
+  }
+}
+
+.calendars
+{
+  @include flex(row, flex-start, space-between);
+  position: relative;
+  margin: 0;
+  padding: 0 8px;
+  flex-grow: 1;
+}
+
+.calendar
+{
+  @include flex(row, flex-start, center);
+  @include fixedWidth(calc(100% / 2));
+  @include fixedHeight(100%);
+  margin: 0 4px;
+}

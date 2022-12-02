@@ -1,0 +1,69 @@
+@import 'styles/main.scss';
+
+.card
+{
+  @include debug;
+  @include fixedWidth(100%);
+  position: relative;
+  margin: 0 0 30px;
+
+  background-color: $color_white;
+  border: solid 1px #CDCDCD;
+  border-radius: 2px;
+  box-shadow: 0px 2px 6px #0000000A;
+}
+
+.header
+{
+  @include flex(row, center, space-between);
+  position: relative;
+  padding: 16px;
+}
+
+.body
+{
+  padding: 0 16px;
+}
+
+.options
+{
+  @include flex(row, center, flex-end);
+  position: relative;
+  margin-right: -12px;
+}
+
+.dots
+{
+  @include flex(row, center, center);
+  @include fixedSize(32px);
+  position: relative;
+
+  @include buttonMake
+  {
+    background-color: transparent;
+    border: none;
+  }
+
+  @include buttonHover
+  {
+    opacity: 0.5;
+  }
+}
+
+.title
+{
+  @include flex(row, center, flex-start);
+  @include typographyBuilder(400, 20, 28);
+
+  position: relative;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  color: #4D4F5C;
+  text-transform: uppercase;
+
+  &[class*="small"]
+  {
+    @include typographyBuilder(400, 14, 14);
+  }
+}

@@ -1,0 +1,30 @@
+@import 'styles/main.scss';
+
+.pageTitle
+{
+  @include flex(row, center, space-between);
+  @include fixedWidth(100%);
+  position: relative;
+  margin: 0 auto 30px;
+  padding: 0;
+}
+
+.section
+{
+  margin-top: 30px;
+}
+
+.container,
+.containerFluid
+{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.row
+{
+  & + .row
+  {
+    margin-top: 30px;
+  }
+}

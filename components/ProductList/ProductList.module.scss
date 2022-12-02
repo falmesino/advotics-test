@@ -1,0 +1,98 @@
+@import 'styles/main.scss';
+
+$image_size: 60px;
+
+.items
+{
+  @include flex(column, flex-start, stretch);
+  @include fixedWidth(100%);
+  @include fixedHeight(calc(#{$image_size} * 5));
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.item
+{
+  @include resetElement;
+  @include flex(row, stretch, stretch);
+  @include fixedWidth(100%);
+
+  border-radius: 2px;
+
+  & + .item
+  {
+    margin-top: 8px;
+
+    &:last-child,
+    &:last-of-type
+    {
+      margin-bottom: 30px;
+    }
+  }
+
+  @include buttonMake {
+    background-color: $color_white;
+    border: solid 1px #CACED5;
+    box-shadow: 0px 2px 6px #0000000A;
+  }
+
+  @include buttonHover {
+    background-color: #FFE7BD;
+    border-color: #FFE7BD;
+  }
+}
+
+.image
+{
+  @include flex(row, center, center);
+  @include fixedSize(#{$image_size});
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  img
+  {
+    @include fixedSize(100%);
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+}
+
+.body
+{
+  @include flex(column, stretch, center);
+  @include fixedWidth(calc(100% - #{$image_size}));
+  position: relative;
+  margin: 0;
+  padding: 0 8px;
+  flex-grow: 1;
+}
+
+.name
+{
+  display: block;
+  @include fixedWidth(100%);
+  @include typographyBuilder(400, 20, 25);
+  white-space: nowrap;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+  color: #000000DE;
+  overflow: hidden;
+}
+
+.meta
+{
+  @include resetElement;
+  @include flex(row, center, space-between, true);
+  @include fixedWidth(100%);
+  @include typographyBuilder(400, 14, 20);
+  margin-top: 2px;
+
+  color: #00000099;
+}

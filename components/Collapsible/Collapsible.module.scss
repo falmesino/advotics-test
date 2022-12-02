@@ -1,0 +1,120 @@
+@import 'styles/main.scss';
+
+%button
+{
+  @include buttonMake {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: $color_white;
+  }
+
+  @include buttonHover {
+    color: darken($color_white, 15%);
+  }
+}
+
+.collapsible
+{
+  @include resetElement;
+
+  margin-bottom: 16px;
+
+  &__collapsed
+  {
+    .body
+    {
+      max-height: 0;
+      height: 0;
+    }
+  }
+
+  &__white
+  {
+    background-color: $color_white;
+    color: #6A6A6A;
+
+    .body
+    {
+      background-color: darken($color_white, 5%);
+    }
+
+    %button
+    {
+      @include buttonMake {
+        color: #6A6A6A;
+      }
+
+      @include buttonHover {
+        color: darken(#6A6A6A, 5%);
+      }
+    }
+  }
+}
+
+.header
+{
+  @include flex(row, center, space-between);
+  @include fixedHeight(48px);
+  position: relative;
+  padding: 0 16px;
+  margin: 0 auto 30px;
+  background-color: $color_primary;
+  color: $color_white;
+}
+
+.body
+{
+  @include transition;
+  @include fixedWidth(100%);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  height: auto;
+  max-height: none;
+}
+
+.title
+{
+  @include flex(row, center, flex-start);
+  @include typographyBuilder(600, 20, 20);
+  text-transform: uppercase;
+  position: relative;
+  padding: 0 12px 0 0;
+  flex-grow: 1;
+}
+
+.button
+{
+  @extend %button;
+  @include flex(row, center, space-between);
+  @include typographyBuilder(300, 14, 14);
+  text-decoration: underline;
+
+  @include buttonHover
+  {
+    color: $color_white;
+    text-decoration: none;
+  }
+
+  img
+  {
+    @include flex(row, center, center);
+    @include fixedSize(20px);
+    margin: 0 4px 0 0;
+    padding: 0;
+    border: none;
+  }
+}
+
+.toggle
+{
+  @extend %button;
+
+  @include flex(row, center, center);
+  @include fixedSize(48px);
+  position: relative;
+  margin: 0 -16px 0 0;
+  padding: 0;
+  color: inherit;
+}

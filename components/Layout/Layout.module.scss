@@ -1,0 +1,25 @@
+@import 'styles/main.scss';
+
+.main
+{
+  @include flex(column, stretch, stretch);
+  @include fixedWidth(100vw);
+  min-height: 100vh;
+  position: relative;
+
+  background-color: #F7F7F7;
+}
+
+.content
+{
+  @include transition;
+  @include position(relative, #{$layout_navbar_height}, 0, 0, #{$layout_menu_width});
+  @include fixedWidth(calc(100vw - #{$layout_menu_width}));
+  padding: 30px 24px;
+  flex-grow: 1;
+
+  &__collapsed
+  {
+    @include fixedWidth(calc(100vw - #{layout_menu_width_expand}));
+  }
+}

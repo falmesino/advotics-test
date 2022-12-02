@@ -1,0 +1,9 @@
+@import 'styles/main.scss';
+
+.pageTitle
+{
+  @include flex(row, center, flex-start);
+  @include typographyBuilder(600, 40, 40);
+  position: relative;
+  color: #707070C4;
+}

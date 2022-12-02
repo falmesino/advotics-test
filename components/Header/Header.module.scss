@@ -1,0 +1,45 @@
+@import 'styles/main.scss';
+
+.header
+{
+  @include flex(row, center, space-between, false);
+  @include fixed(0, 0, auto, 0);
+  @include fixedWidth(100vw);
+  margin: 0 auto;
+  padding: 0 34px;
+  z-index: 1050;
+  min-height: #{$layout_navbar_height};
+
+  background-color: $color_white;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.brand
+{
+  @include flex(row, center, flex-start);
+  position: relative;
+}
+
+.itemContainer
+{
+  @include flex(row, center, flex-end);
+  position: relative;
+}
+
+.item
+{
+  @include flex(row, center, flex-end);
+  position: relative;
+}
+
+.button
+{
+  @include flex(row, center, center);
+  @include fixedSize(48px);
+  position: relative;
+
+  @include buttonMake {
+    background-color: transparent;
+    border: none;
+  }
+}

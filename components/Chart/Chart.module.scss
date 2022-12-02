@@ -1,0 +1,8 @@
+@import 'styles/main.scss';
+
+.chart
+{
+  @include fixedSize(100%);
+  @include flex(row, stretch, stretch);
+  position: relative;
+}

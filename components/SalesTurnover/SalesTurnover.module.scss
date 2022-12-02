@@ -1,0 +1,64 @@
+@import 'styles/main.scss';
+
+.wrapper
+{
+  @include resetElement;
+}
+
+.highlight
+{
+  @include flex(row, center, space-between);
+  position: relative;
+
+  & > span
+  {
+    @include flex(row, center, flex-start);
+    @include typographyBuilder(700, 28, 28);
+  }
+
+  img
+  {
+    @include resetElement;
+    @include fixedSize(48px);
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+}
+
+.info
+{
+  @include flex(row, center, flex-start);
+  @include typographyBuilder(400, 14, 14);
+  position: relative;
+  margin: 0;
+  padding: 4px 0 16px;
+  color: #666;
+
+  & > span
+  {
+    @include flex(row, center, flex-start);
+
+    &:first-child,
+    &:first-of-type
+    {
+      @include typographyBuilder(700, 14, 14);
+    }
+
+    & + span
+    {
+      margin-left: 8px;
+    }
+  }
+}
+
+.arrow
+{
+  color: red;
+  
+  &[class*="up"]
+  {
+    color: $color_primary;
+  }
+}

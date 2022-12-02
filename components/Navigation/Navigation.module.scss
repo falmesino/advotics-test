@@ -1,0 +1,104 @@
+@import 'styles/main.scss';
+
+.navigation
+{
+  @include transition;
+  @include fixed(0, auto, auto, 0);
+  @include fixedHeight(calc(100vh - #{$layout_navbar_height}));
+  @include fixedWidth($layout_menu_width_expand);
+  @include fixed(#{$layout_navbar_height}, auto, 0, 0);
+  overflow-y: auto;
+  z-index: 5;
+  transform-origin: center left;
+
+  background-color: $color_white;
+  border: solid 1px #D2D2D2;
+
+  &__collapsed
+  {
+    @include fixedWidth($layout_menu_width);
+
+    .item
+    {
+      @include flex(row, center, center);
+
+      .label
+      {
+        padding: 0;
+        max-width: 0;
+        width: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.items
+{
+  @include flex(column, stretch, flex-start);
+  @include fixedWidth(100%);
+  margin: 0;
+  position: relative;
+}
+
+.item
+{
+  @include transition;
+  @include flex(row, center, center);
+  position: relative;
+  background-color: transparent;
+  min-height: 48px;
+  padding: 0 12px;
+  
+  @include buttonMake {
+    border: none;
+    background-color: transparent;
+  }
+
+  @include buttonHover {
+    background-color: #D2D2D2;
+  }
+
+  &__active
+  {
+    @include buttonMake {
+      background-color: #D2D2D2;
+    }
+  }
+}
+
+.icon
+{
+  @include flex(row, center, center);
+  @include fixedSize(24px);
+  position: relative;
+}
+
+.label
+{
+  @include transition;
+  @include flex(row, center, flex-start);
+  position: relative;
+  padding: 0 8px;
+  word-wrap: normal;
+  white-space: nowrap;
+  flex-grow: 1;
+}
+
+.icon_wrapper
+{
+  @include fixedSize(24px);
+  @include flex(row, center, center);
+  position: relative;
+  border-radius: 3px;
+  background-color: $color_white;
+  padding: 2px;
+  overflow: hidden;
+
+  img
+  {
+    @include resetElement;
+    @include fixedSize(100%);
+    border: none;
+  }
+}

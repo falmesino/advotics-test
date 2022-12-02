@@ -1,0 +1,44 @@
+@import 'styles/main.scss';
+
+.avatar
+{
+  @include flex(row, center, flex-end);
+  position: relative;
+  margin: 0 16px 0 auto;
+}
+
+.name
+{
+  @include flex(column, center, center);
+  position: relative;
+  padding: 0 16px 0 0;
+  color: #727272;
+}
+
+.username,
+.company
+{
+  @include fontSecondary;
+  @include typographyBuilder(500, 14, 19);
+}
+
+.company
+{
+  @include typographyBuilder(300, 10, 14);
+}
+
+.imageContainer
+{
+  @include fixedSize(32px);
+  position: relative;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.image
+{
+  @include fixedSize(100%);
+  display: block;
+  position: relative;
+  margin: 0 auto;
+}
