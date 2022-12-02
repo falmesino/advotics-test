@@ -1,0 +1,308 @@
+@import '../mixins/all';
+
+$calendar_width: 100%;
+
+$color_primary: '';
+$color_white: #fff;
+$color_white_light: #e6e6e6;
+$color_white_lighter: #f0f0f0;
+$color_green: #37B04C;
+
+$color_now: $color_green;
+$color_active: $color_green;
+
+.react-calendar
+{
+  $this: &;
+
+  width: #{$calendar_width};
+  max-width: 100%;
+  background: $color_white;
+  border: none; // 1px solid #a0a096;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+
+  abbr
+  {
+    text-decoration: none;
+  }
+
+  *,
+  *:before,
+  *:after
+  {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  &--doubleView
+  {
+    width: calc(#{$calendar_width} * 2);
+    
+    #{$this}__viewContainer
+    {
+      display: flex;
+      margin: -0.5em;
+
+      & > *
+      {
+        width: 50%;
+        margin: 0.5em;
+      }
+    }
+  }
+
+  button
+  {
+    margin: 0;
+    border: 0;
+    outline: none;
+
+    &:enabled
+    {
+      &:hover
+      {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__navigation
+  {
+    display: flex;
+    height: 44px;
+    margin-bottom: 0;
+
+    button
+    {
+      @include transition;
+      min-width: 44px;
+      background: none;
+
+      &[class*="prev2-button"],
+      &[class*="next2-button"]
+      {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &:disabled
+      {
+        opacity: 0.5;
+        // background-color: $color_white_lighter;
+      }
+
+      &:enabled
+      {
+        &:hover,
+        &:focus
+        {
+          background-color: $color_white_light;
+        }
+      }
+    }
+  }
+
+  &__month-view
+  {
+    &__weekdays
+    {
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 0.75em;
+
+      border-bottom: solid 1px #ccc;
+      margin-bottom: 12px;
+
+      &__weekday
+      {
+        @include flex(row, center, center);
+        @include fixedWidth(calc(100% / 7));
+        padding: 10px 0;
+      }
+    }
+
+    &__weekNumbers
+    {
+      #{$this}__tile
+      {
+        @include flex(row, center, center);
+        font-size: 0.75em;
+        font-weight: bold;
+      }
+    }
+
+    &__days
+    {
+      &__day
+      {
+        &--weekend
+        {
+          color: #d10000;
+        }
+
+        &--neighboringMonth
+        {
+          color: rgba($color_white, 0); // #757575;
+          display: none;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  &__year-view,
+  &__decade-view,
+  &__century-view
+  {
+    #{$this}__tile
+    {
+      @include flex(row, center, center);
+      @include fixedWidth(calc(100% / 3));
+      position: relative;
+      padding: 20px 0; // 2em 0.5em;
+    }
+  }
+
+  &__century-view
+  {
+    #{$this}__tile
+    {
+      @include fixedWidth(calc(100% / 2));
+    }
+  }
+
+  &__tile
+  {
+    @include flex(row, center, center);
+    @include fixedSize(calc(100% / 7));
+    position: relative;
+    padding: 0;
+    min-height: 48px;
+    background-color: rgba($color_white, 0);
+    text-align: center;
+    line-height: 16px;
+
+    &::before
+    {
+      content: "";
+      @include transition;
+      @include flex(row, center, center);
+      @include absolute(50%, auto, auto, 50%);
+      @include fixedSize(32px);
+      border-radius: 100%;
+      background-color: rgba($color_white, 0);
+      transform: translate3d(-50%, -50%, 0);
+      z-index: 1;
+    }
+
+    & > abbr
+    {
+      @include absolute(50%, auto, auto, 50%);
+      @include flex(row, center, center);
+      @include fixedSize(100%);
+      transform: translate3d(-50%, -50%, 0);
+      z-index: 2;
+    }
+
+    &:disabled
+    {
+      opacity: 0.5;
+
+      &::before
+      {
+        // background-color: $color_white_lighter;
+      }
+    }
+
+    &:enabled
+    {
+      &:hover,
+      &:focus
+      {
+        &::before
+        {
+          background-color: $color_white_light;
+        }
+      }
+    }
+
+    &--now
+    {
+      &::before
+      {
+        background-color: lighten($color_now, 45%);
+      }
+
+      &:enabled
+      {
+        &:hover,
+        &:focus
+        {
+          &::before
+          {
+            background-color: $color_now;
+          }
+        }
+      }
+    }
+
+    &--hasActive
+    {
+      &::before
+      {
+        background-color: lighten(#76baff, 45%);
+      }
+
+      &:enabled
+      {
+        &:hover,
+        &:focus
+        {
+          &::before
+          {
+            background-color: #a9d4ff;
+          }
+        }
+      }
+    }
+
+    &--active
+    {
+      // color: $color_active;
+
+      &::before
+      {
+        background-color: lighten($color_active, 25%);
+      }
+
+      &:enabled
+      {
+        &:hover,
+        &:focus
+        {
+          &::before
+          {
+            background-color: $color_active;
+          }
+        }
+      }
+    }
+  }
+
+  &--selectRange
+  {
+    #{$this}__tile--hover
+    {
+      &::before
+      {
+        background-color: $color_white_light;
+      }
+    }
+  }
+}
